@@ -1,17 +1,28 @@
 body {
-font-family: tahoma;
+font-family: 'Merriweather', serif;
 }
 
 p {
-font-size: 10px;
+padding: 5px;
+border:solid black;
+border-radius: 5px;
+font-size: 25px;
 color: red;
 }
 
 h1 {
+padding: 5px;
 color: blue;
 background-color: yellow;
+box-shadow: 10px 5px 5px black;
 }
 
 a {
 color: green;
+}
+
+h2 {
+padding: 5px;
+color: white;
+background: linear-gradient(to right,blue,yellow)
 }
