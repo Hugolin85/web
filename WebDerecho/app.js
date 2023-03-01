@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 require('dotenv').config();
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,6 +13,8 @@ var diccionarioRouter = require('./routes/diccionario');
 var historiaRouter = require('./routes/historia');
 var novedadesRouter = require('./routes/novedades');
 var contactoRouter = require('./routes/contacto');
+var loginRouter = require('./routes/admin/login');
+var adminRouter = require('./routes/admin/novedades');
 
 var app = express();
 
@@ -25,12 +28,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'pwoewpoe2po',
+  saveUninitialized: true
+}))
+
+secured = async (req,res, next) => {
+  try {
+    console.log(req.session.id_usuario);
+    if (req.session.id_usuario){
+      next();
+    }else{
+      res.redirect('/admin/login');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/diccionario', diccionarioRouter);
 app.use('/historia', historiaRouter);
 app.use('/novedades', novedadesRouter);
 app.use('/contacto', contactoRouter);
+app.use('/admin/login', loginRouter);
+app.use('/admin/novedades', secured, adminRouter);
 
 
 
