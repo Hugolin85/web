@@ -1,17 +1,10 @@
 <main class="holder">
 <br>
 <h2> Novedades </h2>
+{{#each novedades}}
 <div class="novedades"> 
-<h3> titulo1 </h3>
-<h4> subtitulo1 </h4>
-<p> ajsahdkashkshdlashd skjadsa sksa dauspidas daposipod apodispodpsoaidsa </p>
-
-<br>
-
-<div class="novedades"> 
-<h3> titulo2 </h3>
-<h4> subtitulo2 </h4>
-<p> ajsahdkashkshdlashd skjadsa sksa dauspidas daposipod apodispodpsoaidsa </p>
-
-</div>
+<h3> {{titulo}} </h3>
+<h4> {{subtitulo}} </h4>
+<p> {{cuerpo}} </p>
+{{/each}}
 </main>
