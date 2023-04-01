@@ -10,12 +10,25 @@
 <div class="col-7" style="margin-top: -9px ;">
     <h2> Listado de Novedades</h2>
 </div>
-<div class="col-5 text-end">
+<div class="col-2 text-end">
     <a href="/admin/novedades/agregar" class="btn btn-success"><i class="fas fa-plus"></i>
     Nuevo
     </a> 
 </div> 
+<div class="col-3">
+<form class="form-inline my-2 my-lg-0" action="/admin/novedades" method="get"> 
+<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" {{#if q}}value="{{q}}"{{/if}}>
+<button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+</form>
 </div>
+
+{{#if is_search}}
+{{#unless novedades.length}}
+    No se encontraron resultados para "<strong>{{q}}</strong>"
+{{/unless}}
+{{/if}}
+</div>
+
 
 
 <div class="row">

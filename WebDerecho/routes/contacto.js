@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
+var contactoModel = require('../models/contactoModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('contacto', {
     isContacto:true});
   });
+
+router.post('/', function(req,res,next){
+    contactoModel.insertContacto(req.body);
+    res.render('contacto');
+});
 
 router.post('/',async(req,res, next) => {
 var nombre = req.body.nombre;
