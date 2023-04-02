@@ -9,10 +9,11 @@ router.get('/', function(req, res, next) {
     isContacto:true});
   });
 
+  /* descomentar esto si quiero guardar en la base de datos lo de contacto
 router.post('/', function(req,res,next){
     contactoModel.insertContacto(req.body);
     res.render('contacto');
-});
+}); */
 
 router.post('/',async(req,res, next) => {
 var nombre = req.body.nombre;
